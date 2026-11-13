@@ -2,6 +2,8 @@ import sys
 import pandas as pd 
 from time import sleep
 import MetaTrader5 as mt5 
+if __import__("os").environ.get("EXNESS_BOT_ID"):
+    from exness_arena import mt5
 from datetime import datetime
 from DataProcessing import Indicator
 from OrderProcessing import Execute_Buy_Order, Execute_Sell_Order
