@@ -5,8 +5,8 @@ from backtesting.lib import cross
 
 
 def nz(x, y=None):
-    if x is np.nan or x is None:
-        if y is not None and y is not np.nan:
+    if x is None or pd.isna(x):
+        if y is not None and not pd.isna(y):
             return y
         else:
             return 0
@@ -14,7 +14,7 @@ def nz(x, y=None):
         return x
 
 def Cross(dfclose, sptlist):
-    if cross(dfclose[-len(sptlist):], pd.Series(sptlist)):
+    if cross(dfclose.iloc[-len(sptlist):], pd.Series(sptlist)):
         return True 
     else:
         return False 
